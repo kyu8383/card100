@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>해나 &amp; 루나의 100일 초대장</title>
+  <!-- 모바일 화면 최적화를 위한 메타 태그 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 구글 폰트 예시 (필요 시 수정) -->
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
+
+  <style>
+    /* 전체 화면 기본 설정 */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe1e1; /* 파스텔 톤 분홍 배경 */
+      font-family: 'Nanum Gothic', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .card {
+      background-color: #fff;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    /* 상단 타이틀 */
+    .card h1 {
+      font-family: 'Jua', cursive;
+      font-size: 24px;
+      color: #ff7676;
+      margin: 0 0 10px;
+      position: relative;
+    }
+    /* “100일 초대장” 문구 아래 설명 */
+    .message {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #555;
+      margin: 0 auto 20px;
+      padding: 0 10px;
+    }
+    /* 아기 사진(원형) */
+    .baby-face {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #ffd3d3; /* 원 주위 테두리 */
+    }
+    .baby-face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* 사진 비율에 맞게 자르기 */
+      display: block;
+    }
+    /* 날짜 & 장소 정보 */
+    .details {
+      font-weight: bold;
+      margin: 20px 0 10px;
+      font-size: 16px;
+      color: #444;
+      line-height: 1.5;
+    }
+    .details a {
+      color: #444;
+      text-decoration: none;
+      border-bottom: 1px dashed #444;
+    }
+    .details a:hover {
+      color: #ff7676;
+      border-bottom-color: #ff7676;
+    }
+    /* 하단 서명 */
+    .signature {
+      font-size: 14px;
+      color: #999;
+      margin-top: 15px;
+    }
+
+    /* 하트나 꽃 같은 장식(예시: 하트 이모지) */
+    .decoration {
+      position: absolute;
+      font-size: 24px;
+    }
+    .decoration1 {
+      top: 10px;
+      left: 10px;
+    }
+    .decoration2 {
+      top: 60px;
+      right: 20px;
+    }
+    .decoration3 {
+      bottom: 10px;
+      left: 30px;
+    }
+    .decoration4 {
+      bottom: 50px;
+      right: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- 하트나 꽃 이모지 장식 -->
+    <div class="decoration decoration1">✨</div>
+    <div class="decoration decoration2">🌸</div>
+    <div class="decoration decoration3">💖</div>
+    <div class="decoration decoration4">🌼</div>
+
+    <h1>해나 &amp; 루나의 100일 초대장</h1>
+    <p class="message">
+      우리 아가들이 세상에 온 지 <strong>100일</strong>이 되었습니다.<br>
+      두 손 가득 안겨온 기쁨을<br>
+      함께 나누며 축하해 주시면 감사하겠습니다.
+    </p>
+
+    <!-- 아기(가족) 사진 -->
+    <div class="baby-face">
+      <!-- 실제 파일명/경로에 맞춰 수정하세요 -->
+      <img src="KakaoTalk_20250412_140254058.jpg" alt="쌍둥이 아기 사진">
+    </div>
+
+    <!-- 날짜, 시간, 장소 정보 -->
+    <div class="details">
+      <p>📅 2025년 4월 20일 (일)</p>
+      <p>🕰 오전 11시 30분</p>
+      <p>📍 
+        <a href="https://map.naver.com/p/search/%EA%B4%91%EB%AA%85%EA%B8%B4%EC%9E%90/place/36027038?placePath=?entry=pll&from=nx&fromNxList=true&searchType=place&c=15.00,0,0,0,dh" 
+           target="_blank">
+          광명 긴자
+        </a>
+      </p>
+    </div>
+
+    <!-- 서명 -->
+    <div class="signature">해나 &amp; 루나 드림</div>
+  </div>
+</body>
+</html>
