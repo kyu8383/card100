@@ -5,7 +5,7 @@
   <title>해나 &amp; 루나의 100일 초대장</title>
   <!-- 모바일 화면 최적화를 위한 메타 태그 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 구글 폰트 예시 (필요 시 수정) -->
+  <!-- 구글 폰트 예시 -->
   <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,6 @@
     .card h1 {
       font-family: "Hi Melody", sans-serif;
       font-weight: 900;
-      font-style: normal;
       font-size: 33px;
       color: #ff7676;
       margin: 0 0 10px;
@@ -63,11 +62,17 @@
       position: relative;
     }
     .baby-face img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* 사진 비율에 맞게 자르기 */
-      display: block;
+      object-fit: cover;
       transition: opacity 0.6s ease-in-out;
+      opacity: 0;
+    }
+    .baby-face img.active {
+      opacity: 1;
     }
     /* 날짜 & 장소 정보 */
     .details {
@@ -92,7 +97,7 @@
       color: #999;
       margin-top: 15px;
     }
-    /* 하트나 꽃 같은 장식(예시: 이모지) */
+    /* 하트나 꽃 같은 장식 */
     .decoration {
       position: absolute;
       font-size: 24px;
@@ -117,7 +122,7 @@
 </head>
 <body>
   <div class="card">
-    <!-- 하트나 꽃 이모지 장식 -->
+    <!-- 장식 이모지 -->
     <div class="decoration decoration1">✨</div>
     <div class="decoration decoration2">🌸</div>
     <div class="decoration decoration3">💖</div>
@@ -130,10 +135,10 @@
       함께 나누며 축하해 주시면 감사하겠습니다.
     </p>
 
-    <!-- 아기(가족) 사진 슬라이드 영역 -->
+    <!-- 아기 사진 슬라이드 영역 - 두 개의 이미지 요소 사용 -->
     <div class="baby-face">
-      <!-- id="babyImage"를 통해 자동 슬라이드 제어 -->
-      <img id="babyImage" src="1.jpg" alt="쌍둥이 아기 사진">
+      <img id="babyImage1" class="active" src="1.jpg" alt="쌍둥이 아기 사진">
+      <img id="babyImage2" src="" alt="쌍둥이 아기 사진">
     </div>
 
     <!-- 날짜, 시간, 장소 정보 -->
@@ -153,7 +158,7 @@
   </div>
 
   <script>
-    // 슬라이드쇼용 이미지 배열 (파일 경로는 실제 사용 환경에 맞게 수정)
+    // 슬라이드쇼용 이미지 배열 (실제 이미지 파일 경로에 맞게 수정)
     const images = [
       "1.jpg",
       "2.png",
@@ -169,20 +174,36 @@
 
     let currentIndex = 0;
     const totalSlides = images.length;
-    const babyImage = document.getElementById("babyImage");
-    const intervalTime = 3000; // 3초마다 이미지 전환
+    const intervalTime = 3000; // 3초마다 전환
+
+    // 두 이미지 요소 참조
+    const babyImage1 = document.getElementById("babyImage1");
+    const babyImage2 = document.getElementById("babyImage2");
+    let showingImage1 = true; // 현재 표시 중인 이미지 추적
 
     function showNextImage() {
+      // 다음 이미지 인덱스 업데이트
       currentIndex = (currentIndex + 1) % totalSlides;
-      // 부드러운 전환 효과를 위해 opacity 조절
-      babyImage.style.opacity = 0;
-      setTimeout(() => {
-        babyImage.src = images[currentIndex];
-        babyImage.style.opacity = 1;
-      }, 600); // CSS transition과 동일한 시간(0.6초) 후에 이미지 변경
+
+      if (showingImage1) {
+        babyImage2.src = images[currentIndex];
+        babyImage2.onload = () => {
+          // babyImage2를 보이게 하고, babyImage1은 서서히 숨기기
+          babyImage2.classList.add("active");
+          babyImage1.classList.remove("active");
+          showingImage1 = false;
+        };
+      } else {
+        babyImage1.src = images[currentIndex];
+        babyImage1.onload = () => {
+          babyImage1.classList.add("active");
+          babyImage2.classList.remove("active");
+          showingImage1 = true;
+        };
+      }
     }
 
-    // 주기적으로 슬라이드 전환
+    // 일정 시간마다 이미지 전환
     setInterval(showNextImage, intervalTime);
   </script>
 </body>
